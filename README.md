@@ -1,6 +1,13 @@
 # Launching a Node.js Website on Digital Ocean
 
-#### Creating a Droplet
+##### [I. Creating a Droplet](#create)
+##### [II. Adding Your Domain Name](#dns)
+##### [III. Adding "www" to Your URL](#www)
+##### [IV. Pull a Git Repo](#pull)
+##### [III. Starting and Stopping Your Site](#start)
+
+
+#### <a name=create>Creating a Droplet</a>
 
 * Log into your Digital Ocean account and click on "Droplets"
 * Click "Create Droplet" the green button on the top
@@ -10,7 +17,7 @@
 * Do not add SSH keys
 
 
-#### DNS - Adding your domain name
+#### <a name=dns>DNS - Adding your domain name</a>
 
 * Go to the DNS tab
 * If you bought a domain you can add it under the "Add a Domain" section
@@ -21,7 +28,7 @@
 * Apply these changes and it can take up to 24-48 hours to complete
 
 
-#### Adding "www" in front of your site
+#### <a name=www>Adding "www" in Front of Your URL</a>
 
 * Go to your domain on the DNS tab of Digital Ocean
 * Select "Add Record" - the big ass blue button
@@ -30,7 +37,7 @@
 * The second box with "Enter Hostname" please put "yourdomain.com"
 * This will allow users to go to your site whether they input your domain with or without the "www" in front of it
 
-#### Pull a Git repo 
+#### <a name=pull>Pull a Git Tepo</a>
 
 * SSH into your Digital Ocean server. The command should look something like
 
@@ -53,7 +60,7 @@ git remote add origin HTTPSlinkfromrepo
 git pull origin master
 ```
 
-#### Start and Stop commands
+#### <a name=start>Starting and Stopping Your Site</a>
 
 **Start server regularly** 
 
