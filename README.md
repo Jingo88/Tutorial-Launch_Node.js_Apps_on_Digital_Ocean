@@ -15,7 +15,7 @@
 * You don't need to check of anything in Available Settings
 * Select Ubuntu
 * Do not add SSH keys
-
+* Digital Ocean will send you an e-mail with the initial login information
 
 #### <a name=dns>DNS - Adding your domain name</a>
 
@@ -37,7 +37,7 @@
 * The second box with "Enter Hostname" please put "yourdomain.com"
 * This will allow users to go to your site whether they input your domain with or without the "www" in front of it
 
-#### <a name=pull>Pull a Git Tepo</a>
+#### <a name=pull>Pull a Git Repo</a>
 
 * SSH into your Digital Ocean server. The command should look something like
 
