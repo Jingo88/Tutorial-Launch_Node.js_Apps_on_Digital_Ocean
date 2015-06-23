@@ -49,6 +49,8 @@ ssh root@yourdomainname.com
 * You need to only run this command once. It will pull from a repo the Ubuntu installation
 
 ```
+This script is no longer working, planning on including a new script soon, along with what is being installed.
+
 bash <(wget -qO- http://gitlab.generalassemb.ly/princess-peach/install_fest/raw/master/install_script_ubuntu)
 ```
 
