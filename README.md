@@ -9,6 +9,7 @@
 ##### [III. Adding "www" to Your URL](#www)
 
 ### <a name=intro>What is Digital Ocean / SSH</a>
+---
 
 Digital Ocean is a hosting service which allows us to put our code online and launch our web application for the whole world to see. 
 
@@ -29,6 +30,7 @@ A server is a computer that:
 SSH is a UNIX command we use to log into another computer via the terminal over a network. It allows us to execute commands remotely!
 
 ### <a name=create>Creating a Droplet</a>
+---
 
 * Run the following command to copy your ssh key from your terminal. `pbcopy` will automatically copy the key
 
@@ -47,6 +49,7 @@ pbcopy < ~/.ssh/id_rsa.pub
 * Digital Ocean will send you an e-mail with the initial login information
 
 ### <a name=connect>Connecting to the Droplet</a>
+---
 
 * Look into the email you got from Digital ocean. It will contain a password and IP address.
 
@@ -75,6 +78,7 @@ apt-get install npm
 ```
 
 ### <a name=clone>Cloning your repo</a>
+---
 
 * If you logged out of your droplet, SSH back into your Digital Ocean server. The command should look something like
 
@@ -91,6 +95,7 @@ git pull origin master
 ```
 
 ### <a name=start>Starting and Stopping Your Site</a>
+---
 
 **Start server regularly** 
 
@@ -137,6 +142,7 @@ kill -9 processnumber
 rm nohup.out
 ```
 ### <a name=dns>DNS - Adding your domain name</a>
+---
 
 * Go to the DNS tab
 * If you bought a domain you can add it under the "Add a Domain" section
@@ -148,6 +154,7 @@ rm nohup.out
 
 
 ### <a name=www>Adding "www" in Front of Your URL</a>
+---
 
 * Go to your domain on the DNS tab of Digital Ocean
 * Select "Add Record" - the big ass blue button
