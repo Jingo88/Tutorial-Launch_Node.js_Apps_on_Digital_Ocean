@@ -1,59 +1,87 @@
-# Launching a Node.js Website on Digital Ocean
+# Connecting to Digital Ocean and Launching a Node.js Website
 
+##### [I. What is Digital Ocean](#intro) 
 ##### [I. Creating a Droplet](#create)
+##### [I. Connecting to the Droplet](#connect)
+##### [I. Cloning a Repo](#clone)
+##### [III. Starting and Stopping Your Site](#start)
 ##### [II. Adding Your Domain Name](#dns)
 ##### [III. Adding "www" to Your URL](#www)
-##### [IV. Pull a Git Repo](#pull)
-##### [III. Starting and Stopping Your Site](#start)
 
+### <a name=intro>What is Digital Ocean / SSH</a>
 
-#### <a name=create>Creating a Droplet</a>
+Digital Ocean is a hosting service which allows us to put our code online and launch our web application for the whole world to see. 
 
+So what about these questions?
+
+* What is a server?
+* Can a computer be a server?
+* Are we able to connect to another computer `remotely`?
+* Can we connect to a server `remotely`?
+
+A server is a computer that servers up data. We can access computers remotely so we must be able to access server. That's what we're doing now, building a connection to a server powered by Digital Ocean.
+
+A server is a computer that:
+
+* acts as a central interface for data
+* manages interaction between clients / computers
+
+SSH is a UNIX command we use to log into another computer via the terminal over a network. It allows us to execute commands remotely!
+
+### <a name=create>Creating a Droplet</a>
+
+* Run the following command to copy your ssh key from your terminal. `pbcopy` will automatically copy the key
+
+```
+pbcopy < ~/.ssh/id_rsa.pub  
+```
+* Log into your Diginal Ocean account > Settings > Security > Add SSH Key
+	* You can make the name anything you would like it to be and you can include more than one SSH key
 * Log into your Digital Ocean account and click on "Droplets"
 * Click "Create Droplet" the green button on the top
 * Name your Droplet and choose from a select size. 
 * You don't need to check of anything in Available Settings
+* Region = USA, unless you're somewhere else? o.O
 * Select Ubuntu
 * Do not add SSH keys
 * Digital Ocean will send you an e-mail with the initial login information
 
-#### <a name=dns>DNS - Adding your domain name</a>
+### <a name=connect>Connecting to the Droplet</a>
 
-* Go to the DNS tab
-* If you bought a domain you can add it under the "Add a Domain" section
-* Select your newly created droplet from the drop down menu
-* Click "Create Domain"
-* Depending on where you bought your domain from you need to go to that original site
-* Change your Domain Name Server information to the links next to the "NS" tab on the DNS Digital Ocean page
-* Apply these changes and it can take up to 24-48 hours to complete
+* Look into the email you got from Digital ocean. It will contain a password and IP address.
 
+```
+ssh root@YOUR-IP-ADDRESS
+```
+* Lets run a quick update
+* apt-get is a repository that manages the installation of packages for Ubuntu
+	* Like what brew does for OSX
+	* Like what npm does for node
 
-#### <a name=www>Adding "www" in Front of Your URL</a>
+```
+apt-get update
+```
 
-* Go to your domain on the DNS tab of Digital Ocean
-* Select "Add Record" - the big ass blue button
-* Seclect "CNAME" from the list that appears
-* The first box with "Enter Name" please put "www"
-* The second box with "Enter Hostname" please put "yourdomain.com"
-* This will allow users to go to your site whether they input your domain with or without the "www" in front of it
+* Now install what you need for your app. The below code installs `git` and `node` for us to use. 
 
-#### <a name=pull>Pull a Git Repo</a>
+```
+apt-get install git
 
-* SSH into your Digital Ocean server. The command should look something like
+apt-get install nodejs
+
+apt-get install nodejs-legacy
+
+apt-get install npm
+```
+
+### <a name=clone>Cloning your repo</a>
+
+* If you logged out of your droplet, SSH back into your Digital Ocean server. The command should look something like
 
 ```
 ssh root@yourdomainname.com
 ```
-
-* You are now the root user and in the "home" section of the "root" folder
-* You need to only run this command once. It will pull from a repo the Ubuntu installation
-
-```
-This script is no longer working, planning on including a new script soon, along with what is being installed.
-
-bash <(wget -qO- http://gitlab.generalassemb.ly/princess-peach/install_fest/raw/master/install_script_ubuntu)
-```
-
+* You should be in the `home` section of the `root` user. 
 * Now create a directory and connect the repo you plan to pull from
 
 ```
@@ -62,7 +90,7 @@ git remote add origin HTTPSlinkfromrepo
 git pull origin master
 ```
 
-#### <a name=start>Starting and Stopping Your Site</a>
+### <a name=start>Starting and Stopping Your Site</a>
 
 **Start server regularly** 
 
@@ -108,18 +136,23 @@ kill -9 processnumber
 ```
 rm nohup.out
 ```
+### <a name=dns>DNS - Adding your domain name</a>
 
-**Pull and update Git files**
-
-
-
-
-
-
-
-
-
+* Go to the DNS tab
+* If you bought a domain you can add it under the "Add a Domain" section
+* Select your newly created droplet from the drop down menu
+* Click "Create Domain"
+* Depending on where you bought your domain from you need to go to that original site
+* Change your Domain Name Server information to the links next to the "NS" tab on the DNS Digital Ocean page
+* Apply these changes and it can take up to 24-48 hours to complete
 
 
+### <a name=www>Adding "www" in Front of Your URL</a>
 
+* Go to your domain on the DNS tab of Digital Ocean
+* Select "Add Record" - the big ass blue button
+* Seclect "CNAME" from the list that appears
+* The first box with "Enter Name" please put "www"
+* The second box with "Enter Hostname" please put "yourdomain.com"
+* This will allow users to go to your site whether they input your domain with or without the "www" in front of it
 
